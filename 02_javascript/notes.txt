@@ -10,7 +10,6 @@ JavaScript Course
         Intro
         Objects and Object Constructors   
             Intro
-            */
                 // object literal syntax ('the best way to define objects')
                 const myObject = {
                     property: 'value',
@@ -32,7 +31,6 @@ JavaScript Course
                     const variable = 'property';
                     myObject.variable; // undefined
                     myObject[variable]; // resolves to 'myObject.property' and returns 'value'
-            /*
             Lesson Overview
                 will learn 
                     how to write an object constructuctor and instantiate the object
@@ -41,7 +39,6 @@ JavaScript Course
                     understand the basic dos and donts of prototypal inheritance 
                     explain what the this keyword is
             Objects as a design pattern              
-            */
                 // example one
                 const playerOneName = "tim";
                 const playerTwoName = "jenn";
@@ -60,3 +57,40 @@ JavaScript Course
                 };           
 
                 // resume at https://www.theodinproject.com/lessons/node-path-javascript-objects-and-object-constructors#objects-as-a-design-pattern
+            Object constructors
+                function Player(name, marker){
+                    this.name = name;
+                    this.marker = marker;
+                    this.sayName = function(){
+                        console.log(this.name);
+                    }
+                }
+                const player = new Player('steve','x');
+                console.log(player.name); // 'steve'
+                // see also
+                player.sayName();
+            Exercise
+                see book.js
+            The prototype
+                All objects in js have a prototype...
+                ...the prototype is another object...
+                ...that the original object inherits from and has access to al of it's prototype's methods and properties
+                wha?!
+            Accessing an object's prototype
+                [book.js]
+                All objects in js have a prototype...
+                    * you can check the obejct's prototype by using Object.getPrototypeOf() 
+                    * Object.getPrototypeOf(player1);
+                ...the prototype is another object...
+                    * the VALUE of the Object Constructor's .prototype property contains the prototype object
+                    * the REFERENCE to this value of Player.prototype is stored in every Player object, every time a Player obect is created
+                    * Hence you get a true value returned for Object.getPrototypeOf(hobbit) === Book.prototype
+                ...that the original object inherits from and has access to al of it's prototype's methods and properties
+                    * so any properties or methods defined ON THE PROTOTYPE will be available to the created objects (instances)
+            Prototypal inheritance 
+                what is the purpose of defining propeties andfunctions on the prototype?
+                    1. define properties and functions common among all objects on the prototype
+                        to save mmory
+                    2. it is a type of inheritance 
+                    [personplayer.js]
+            
