@@ -33,11 +33,11 @@ JavaScript Course
                     myObject[variable]; // resolves to 'myObject.property' and returns 'value'
             Lesson Overview
                 will learn 
-                    how to write an object constructuctor and instantiate the object
-                    describe what a prototype is and how it can be used
-                    explain prototypal inheritance 
-                    understand the basic dos and donts of prototypal inheritance 
-                    explain what the this keyword is
+                    * how to write an object constructuctor and instantiate the object
+                    * describe what a prototype is and how it can be used
+                    * explain prototypal inheritance 
+                    * understand the basic dos and donts of prototypal inheritance 
+                    * explain what the this keyword is
             Objects as a design pattern              
                 // example one
                 const playerOneName = "tim";
@@ -93,4 +93,34 @@ JavaScript Course
                         to save mmory
                     2. it is a type of inheritance 
                     [personplayer.js]
+                considerations
+                    the prototype chain has to be set up via setPrototypeOf() before creating any objects
+                    this doesn't Work
+                        Player.prototype = Person.prototype
+            Assignments
+                01.01
+                    https://www.digitalocean.com/community/tutorials/understanding-prototypes-and-inheritance-in-javascript
+                01.02
+                    https://javascript.info/prototype-inheritance 
+                02.01
+                    'this' https://www.javascripttutorial.net/javascript-this/
+                03
+                    https://medium.com/@eamonocallaghan/prototype-vs-proto-vs-prototype-in-javascript-6758cadcbae8
+            Knowledge Check Questions
+                How do you write an object constructor and instantiate the object?
+                    function Player(name, marker){
+                        this.name = name;
+                        this.marker = marker;
+                    }
+                    const player2 = new Player('Grimace', '0');
+                What is a prototype and how can it be used?
+                    It's the parent object, and it allows for inheritance (and saves memory)
+                What is prototypal inheritance?
+                    Where you inherit methods and properties from the parent
+                What are the basic do’s and don’t’s of prototypal inheritance?
+                    dont
+                        Using setPrototypeOf() after objects have already been created can result in performance issues.
+                How does this behave in different situations?
+                    this in a function is limited to that function, and refers to itself
+                    this 
             
