@@ -1,0 +1,11 @@
+body {
+    background-color: lightblue;
+    color: navy;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: 75px 150px;
+    grid-template-rows: 25px 25px;
+  }
