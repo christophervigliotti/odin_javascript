@@ -1,4 +1,10 @@
-// https://www.theodinproject.com/lessons/node-path-javascript-factory-functions-and-the-module-pattern
+/*
+https://www.theodinproject.com/lessons/node-path-javascript-factory-functions-and-the-module-pattern
+takeaways
+  let   global scope or 'window scope'
+  var   function scope
+  const block scope
+*/
 let globalAge = 23; // This is a global variable
 
 // This is a function - and hey, a curly brace indicating a block

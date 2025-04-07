@@ -23,3 +23,6 @@ function makeAdding (firstNumber) {
   
   const add5 = makeAdding(5);
   console.log(add5(2)) // logs 7
+
+// https://wesbos.com/javascript/03-the-tricky-bits/closures
+console.log('A closure is the ability to access a parent level scope from a child scope, even after the parent function has been terminated.');
