@@ -1,0 +1,26 @@
+Knowledge check
+    How does scope work in JavaScript?
+        global outside of {curly braces}
+        local inside of {curly braces}
+        scopes
+            var     function scope
+            let     block scope, varialbe
+            const   block scope, constant (set once)
+    What are closures and how do they help in creating private variables?
+        defined 
+            the combination of a function and the surrounding state in which the function was declared
+            aka the 'lexical environment'
+        how they help
+            associate data with functions and manipulate that data anywhere outside of the enclosing function
+        how they help in creating private variables 
+            the question is the answer 😆 
+    What common issues can you face when working with constructors?
+        they don’t provide automatic safeguards that prevent from using them wrong
+        also 
+            misusing instanceof. In other programming languages, the keyword is a reliable way to know the code with which an object was made; but in JavaScript, it checks the presence of a constructor’s prototype in an object’s entire prototype chain - which does nothing to confirm if an object was made with that constructor since the constructor’s prototype can even be reassigned after the creation of an object
+    What are private variables in factory functions and how can they be useful?
+        TODO: resume at https://www.theodinproject.com/lessons/node-path-javascript-factory-functions-and-the-module-pattern#factory-functions
+    How can we implement prototypal inheritance with factory functions?
+    How does the module pattern work?
+    What does IIFE stand for and what are they?
+    What is the concept of namespacing and how do factory functions help with encapsulation?

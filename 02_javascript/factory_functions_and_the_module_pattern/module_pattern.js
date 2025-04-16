@@ -7,12 +7,13 @@ https://dev.to/tomekbuszewski/module-pattern-in-javascript-56jm
 const SomeModule = (function() {})();
 
 // a module with a private function inside
-const Formatter = (function() {
+const Formatter0 = (function() {
     const log = (message) => console.log(`[${Date.now()}] Logger: ${message}`);
-    // code will execugte, but Formatter.log() will not work
+    // code will executer, but Formatter.log() will not work
 })();
 
 const Formatter2 = (function() {
+    console.log('Formatter2 is in the house');
     const log = (message) => console.log(`[${Date.now()}] Logger: ${message}`);
   
     const makeUppercase = (text) => {
@@ -53,30 +54,85 @@ console.log(Formatter3.makeUppercase("tomek"));
 console.log(Formatter3.timesRun);
 */
 
-Formatter3.timesRun = 10; // everything publicly exposed can be changed from the outside. This is one of the biggest module pattern drawbacks.
+// Formatter3.timesRun = 10; // everything publicly exposed can be changed from the outside. This is one of the biggest module pattern drawbacks.
 // console.log(Formatter3.timesRun);
 
 // Reference types works differently. Here, you can define it and it will be populated as you go...
 const Formatter4 = (function() {
-    const log = (message) => console.log(`[${Date.now()}] Logger: ${message}`);
-    const timesRun = [];
-  
-    const makeUppercase = (text) => {
-      log("Making uppercase");
-      timesRun.push(null);
-      return text.toUpperCase();
-    };
-  
-    return {
-      makeUppercase,
-      timesRun,
-    }
+  let timesRun = 0;
+
+  const log = (message) => console.log(`[${Date.now()}] Logger: ${message}`);
+  const setTimesRun = () => { 
+    log("Setting times run");
+    ++timesRun;
+  }
+
+  const makeUppercase = (text) => {
+    log("Making uppercase");
+    setTimesRun();
+    return text.toUpperCase();
+  };
+
+  return {
+    makeUppercase,
+    timesRun,
+  }
 })();
 /*
 console.log(Formatter4.makeUppercase("tomek"));
 console.log(Formatter4.makeUppercase("tomek"));
 console.log(Formatter4.makeUppercase("tomek"));
-console.log(Formatter4.timesRun.length);
+console.log(Formatter4.timesRun);
+*/
+const Formatter5 = (function() {
+  const log = (message) => console.log(`[${Date.now()}] Logger: ${message}`);
+  const timesRun = [];
+
+  const makeUppercase = (text) => {
+    log("Making uppercase");
+    timesRun.push(null);
+    return text.toUpperCase();
+  };
+
+  return {
+    makeUppercase,
+    timesRun,
+  }
+})();
+
+/*
+console.log(Formatter5.makeUppercase("tomek"));
+console.log(Formatter5.makeUppercase("tomek"));
+console.log(Formatter5.makeUppercase("lower case?!"));
+console.log(Formatter5.timesRun.length);
 */
 
-resume at https://dev.to/tomekbuszewski/module-pattern-in-javascript-56jm
+// DECLARING MODULE DEPENDENCIES
+
+const documentMock = (() => ({
+  querySelector: (selector) => ({
+    innerHTML: null,
+  }),
+}))();
+
+const Formatter = (function(doc) {
+  const log = (message) => console.log(`[${Date.now()}] Logger: ${message}`);
+
+  const makeUppercase = (text) => {
+    log("Making uppercase");
+    return text.toUpperCase();
+  };
+
+  const writeToDOM = (selector, message) => {
+    doc.querySelector(selector).innerHTML = message;
+    log(message);
+  }
+
+  return {
+    makeUppercase,
+    writeToDOM,
+  }
+// })(document || documentMock);
+})((typeof document === 'undefined')? documentMock : document);
+
+Formatter.writeToDOM();
