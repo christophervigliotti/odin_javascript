@@ -19,8 +19,13 @@ Knowledge check
         also 
             misusing instanceof. In other programming languages, the keyword is a reliable way to know the code with which an object was made; but in JavaScript, it checks the presence of a constructor’s prototype in an object’s entire prototype chain - which does nothing to confirm if an object was made with that constructor since the constructor’s prototype can even be reassigned after the creation of an object
     What are private variables in factory functions and how can they be useful?
-        TODO: resume at https://www.theodinproject.com/lessons/node-path-javascript-factory-functions-and-the-module-pattern#factory-functions
+        a private variable or function uses closures to create smaller, dedicated variables and functions within a factory function itself - things that we do not need to return in the object itself. This way we can create neater code, without polluting the returned object with unnecessary variables that we create while creating the object itself.
     How can we implement prototypal inheritance with factory functions?
+        example at create_player_redux.js
     How does the module pattern work?
+        examples and notes at module_pattern.js and module_pattern_redux.js
     What does IIFE stand for and what are they?
-    What is the concept of namespacing and how do factory functions help with encapsulation?
+        immediately invoked function expression 
+    What is the concept of namespacing and how do factory functions 
+    help with encapsulation?
+        This is where we encounter the word encapsulation - bundling data, code, or something into a single unit, with selective access to the things inside that unit itself. While it sounds general, this is what happens when we wrap, or encapsulate our code into modules - we don’t expose everything to the body of our program itself. This encapsulation leads to an effect called namespacing. Namespacing is a technique that is used to avoid naming collisions in our programs.
